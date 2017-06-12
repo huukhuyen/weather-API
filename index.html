@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Weather Plugin Example</title>
+    <!--The following script tag downloads a font from the Adobe Edge Web Fonts server for use within the web page. We recommend that you do not modify it.-->
+    <script>
+        var __adobewebfontsappname__ = "dreamweaver"
+    </script>
+    <script src="http://use.edgefonts.net/quicksand:n3,n4:default.js" type="text/javascript"></script>
+    <!-- include flatWeatherPlugin.css -->
+    <link href="css/flatWeatherPlugin.css" rel="stylesheet">
+    <!-- include a copy of jquery (if you haven't already) -->
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <!-- include flatWeatherPlugin.js -->
+    <script src="js/jquery.flatWeatherPlugin.min.js"></script>
+    <script type="text/javascript">
+        function startWeather() {
+            $(document).ready(function() {
+                //Setup the plugin, see readme for more examples
+                var example = $("#example").flatWeatherPlugin({
+                    location: "Danang",
+                    country: "Vietnam",
+                    api: "yahoo",
+                    displayCityNameOnly: false,
+                    view: "today",
+                });
+            });
+        }
+    </script>
+    <style>
+        /* style the container however you please */
+
+        #example {
+            position: absolute;
+            color: #fff;
+            background: #00000;
+            padding: 10px;
+            margin: 30px auto;
+            width: 340px;
+            border-radius: 1px;
+        }
+        /* styling for this page only, ignore */
+
+        body {
+            background: #95a5a6;
+            font-family: sans-serif;
+            background: #000000;
+            padding: 0;
+            margin: 0;
+        }
+
+        p {
+            color: #888;
+            width: 200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+    <script>
+        var array = ["You look great!", "Hi, sexy", "test3", "test4", "test5"]
+        var count = 0;
+        var count2 = 0;
+
+        function text() {
+            if (count == 5) {
+                var val = Math.floor((Math.random() * 5));
+                count = 0;
+                count2 = count2 + 1;
+                document.getElementById("text").innerHTML = array[val];
+            }
+            count = count + 1;
+        }
+    </script>
+    <script>
+        function startPage() {
+            startTime();
+            startWeather();
+            text();
+        }
+    </script>
+    <script>
+        function startTime() {
+            var day;
+            var month;
+            var hour;
+            var ampm;
+            var currentdate = new Date();
+            switch (new Date().getDay()) {
+                case 0:
+                    day = "Sunday";
+                    break;
+                case 1:
+                    day = "Monday";
+                    break;
+                case 2:
+                    day = "Tuesday";
+                    break;
+                case 3:
+                    day = "Wednesday";
+                    break;
+                case 4:
+                    day = "Thursday";
+                    break;
+                case 5:
+                    day = "Friday";
+                    break;
+                case 6:
+                    day = "Saturday";
+                    break;
+            }
+            switch (new Date().getMonth()) {
+                case 0:
+                    month = "January";
+                    break;
+                case 1:
+                    month = "February";
+                    break;
+                case 2:
+                    month = "March";
+                    break;
+                case 3:
+                    month = "April";
+                    break;
+                case 4:
+                    month = "May";
+                    break;
+                case 5:
+                    month = "June";
+                    break;
+                case 6:
+                    month = "July";
+                    break;
+                case 7:
+                    month = "August";
+                    break;
+                case 8:
+                    month = "September";
+                    break;
+                case 9:
+                    month = "October";
+                    break;
+                case 10:
+                    month = "November";
+                    break;
+                case 11:
+                    month = "December";
+                    break;
+            }
+            var dt = day + ", " + month + " " + currentdate.getDate() + " ";
+            document.getElementById("demo").innerHTML = dt;
+            var hour;
+            var ampm;
+            var currentdate = new Date();
+            if (currentdate.getHours() <= 12) {
+                hour = currentdate.getHours();
+                ampm = "AM";
+            } else {
+                hour = currentdate.getHours() - 12;
+                ampm = "PM";
+            }
+            if (currentdate.getMinutes() == 0) {
+                var minutes = "00";
+            } else if (currentdate.getMinutes() < 10) {
+                var minutes = "0" + currentdate.getMinutes();
+            } else {
+                var minutes = currentdate.getMinutes();
+            }
+            var dt = hour + ":" + minutes + " " + ampm;
+            document.getElementById("demo2").innerHTML = dt;
+        }
+    </script>
+</head>
+
+<body onload="startPage(); setInterval('startPage()', 1000 )">
+    <div style="height:0px;margin-left:200px; font-family: quicksand; font-style: normal; font-weight: 500; align-content:center; align-items:center; align-self:center;">
+        <p id="demo" style="width: 600px; color: #FFFFFF; font-size: 50px; align-content:center; align-self:center; align-items:center;"></p>
+        <p id="demo2" style="width: 500px; color: #FFFFFF; font-size: 50px; align-content:center; align-self:center; align-items:center;"></p>
+    </div>
+
+
+    <!-- Widget weather -->
+    <div style="position:absolute; margin-top:0px;" id="example"></div>
+
+
+
+    <div style="margin-top:230px">
+        <iframe frameborder="0" scrolling="no" height="234" width="379" allowtransparency="true" marginwidth="0" marginheight="0" src="http://eqrates.investing.com/index.php?pairs_ids=277;6369;6408;243;282;271;26490;252;7997;&header-text-color=%23FFFFFF&header-bg=%23000000&curr-name-color=%23ffffff&inner-text-color=%23ffffff&green-text-color=%239bff82&green-background=transparent;&red-text-color=%23ff8c8c&red-background=transparent;&inner-border-color=%23000000&border-color=%23000000&bg1=%23000000&bg2=%23000000&open=hide&high=hide&low=hide&last_update=hide"></iframe>
+        <div style="width:379px;"></div>
+    </div>
+</body>
+
+</html>
